@@ -20,7 +20,6 @@ const SinhVien: React.FC = () =>{
     let token = localStorage.getItem("token");
     const [data, setData] = useState<DataType[]>([]);
     // console.log(data)
-    const [Lop, setLop] = useState<LopProps>();
     
     useEffect(()=>{
         axios.get("http://192.168.5.240//api/v1/builder/form/sinh-vien/data?page=1&pageSize=10",
@@ -34,8 +33,7 @@ const SinhVien: React.FC = () =>{
             console.log(res.data.data)
             setData(res.data.data)
         });
-        const Obj = data.filter(obj => obj.lop !== null);     
-        console.log()
+     
     },[])
     // console.log(tenLop)
 
@@ -57,6 +55,7 @@ const SinhVien: React.FC = () =>{
           if(res.data.status == true){
             const newData = data.filter(item => item.id != getId);
             setData(newData);
+            console.log(res.data.message)
             }else{
                 console.log(res.data.message)
             }

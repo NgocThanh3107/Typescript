@@ -46,10 +46,11 @@ const LopHoc: React.FC = () =>{
       }        
       )
       .then(res=>{
-        console.log(res.data.status)
+    
           if(res.data.status == true){
             const newData = getdata.filter(item => item.id != getId);
             setData(newData);
+            console.log(res.data.message)
             }else{
                 console.log(res.data.message)
             }
