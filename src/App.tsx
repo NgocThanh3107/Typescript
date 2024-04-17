@@ -15,7 +15,9 @@ import Test from './component/content/crdu-LH/test';
 
 
 function App() {
-  
+ 
+  localStorage.setItem("api", "0177e09f564ea6fb08fbe969b6c70877");
+
   return (
     <BrowserRouter>
       <Routes>

@@ -3,39 +3,42 @@ import { Layout, Flex } from 'antd';
 import Menu_header from '../../components/header/menu-header';
 import { Outlet } from 'react-router-dom';
 import './_home.scss';
-import Header from '../../components/header/header';
-import { Content } from 'antd/es/layout/layout';
-
-const {  Footer } = Layout;
-
-
-
-const footerStyle: React.CSSProperties = {
-  textAlign: 'center',
-  color: '#fff',
-  backgroundColor: '#4096ff',
-};
+import Headers from '../../components/header/header';
 
 
 const Homepage: React.FC = () =>{
 
+  const { Header, Footer, Content } = Layout;
 
+  const footerStyle: React.CSSProperties = {
+    textAlign: 'center',
+    color: '#fff',
+    backgroundColor: '#4096ff',
+  };
+  
+  
 return (
-  <Layout>
-    <Header />
+  <Flex gap="middle" wrap="wrap">
+    <Layout className='style_layout'>
+      <Header className='header_style'>
+        <Headers />
+      </Header>
       <Layout>
-        <Content className='content'>
-          <Menu_header />
-            <Outlet />  
+        <Content  className='content_style'>
+          <div className='sider_style' >
+            <Menu_header />
+          </div>
+            <div className='Outlet'><Outlet /></div>        
         </Content>
       </Layout>
-    <Footer style={footerStyle}>Footer</Footer>
-  </Layout>
-
+      <Footer style={footerStyle}>Footer</Footer>
+    </Layout>
+  </Flex>
 )
 }
 
 export default Homepage;
+
 
 
 
