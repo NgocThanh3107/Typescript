@@ -31,6 +31,7 @@ const Login: React.FC = () => {
         }
       })
       .then((res) => {
+        console.log(res)
         if (res.data.status == false) {
           console.log(res.data.message)
           alert("incorrect username or password")
@@ -64,7 +65,6 @@ const Login: React.FC = () => {
         label="Username"
         name="username"
         rules={[{ required: true, message: 'Please input your email!' }]}
-
       >
         <Input />
       </Form.Item>

@@ -12,7 +12,8 @@ const Headers: React.FC = () => {
   let api = localStorage.getItem("api");
   const navigate = useNavigate();
   const check = localStorage.getItem("check");
-  console.log(check)
+  // console.log(check)
+
   let token = localStorage.getItem("token");
 
   function CheckLogin(){
