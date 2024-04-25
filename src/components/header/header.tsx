@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Link from 'antd/es/typography/Link';
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
+import { Avatar} from 'antd';
 import axios from 'axios';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './_header.scss'
 
 
@@ -45,9 +45,18 @@ const Headers: React.FC = () => {
   
   return (
     <div className='header'>  
-      <h3><Link href="/"><i className="fa fa-home" aria-hidden="true"></i>HOME</Link></h3>
-        {CheckLogin()}
-      <p><Link href='/account'><Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} /></Link></p>
+      <div className='nav'>
+          <ul>
+            <li><Link href="/"><i className="fa fa-home" aria-hidden="true"></i>Home</Link></li>
+            <li><a href="">About</a></li>
+            <li><a href="">Services</a></li>
+            <li><a href="">Contact</a></li>
+          </ul>
+      </div>
+      <div className='nav-right'>
+          {CheckLogin()}
+          <p><Link href='/account'><Avatar style={{ backgroundColor: '#87d068' }} icon={<UserOutlined />} /></Link></p>
+      </div>
     </div>
   );
 };

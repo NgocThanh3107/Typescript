@@ -1,47 +1,69 @@
-.style-layout{
-   width: 100%; 
+
+.app{
+   width: 100%;   
    display: block;
    height: auto;
-   margin: 0;
+   margin: auto;
    padding: 0;
    background-color: #fff;
-  
+//    border: 1px solid #cac5c5;    
 }
-.Outlet{
-    width: 80%;
+.table-style{
+    width: 83%;
     display: block;
     float: left;
     height: 100%;
-    margin-left: 20px;
+    margin-left: 1%;
     position: relative;
+    margin-top: 10px;
+  
     table{
         border: 1px solid #cac5c5;
         margin: 0;
         background-color: #d4d0d0;
-    }
-    padding-top: 20px;  
-    // background-color: #f3f3f3;
+        th{
+            font-size: 17px;
+        }
+        
+    }  
 }
-
 .sider_style{
     width: 15%;
-    height: 100%;
+    height: auto;
     text-align: center;
-    // line-height: 20px;
     color: #333;
     float: left;
     background-color: #d4d0d0;
+    margin-top: 45px;
+    border-radius: 10%;
 }
 .content_style{
     display: block;
     width: 100%;
-    height: 1200px;
+    margin: auto;
+    height: auto;
     text-align: center;
     line-height: 20px;
     color: #333;
     float: left;
     background-color: #fff;
-    // background-image: url("https://www.w3schools.com/w3images/woods.jpg");
     min-height: 20px;
+    // position: sticky;
+    top: 120px;
+    overflow: auto;
 }
-
+.footer {
+    margin:0 auto;
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    text-align: center;
+    line-height: 80px;
+    background-color: #cac5c5;
+}
+.No-page{
+    font-size: 70px;
+    text-align: center;
+    margin-top: 300px;
+    font-weight: bold;
+}

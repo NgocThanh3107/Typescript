@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { Button, Checkbox, Form, type FormProps, Input } from 'antd';
+import { Button, Form, type FormProps, Input } from 'antd';
 import React from "react";
 
 const Read: React.FC = () => {
@@ -24,7 +24,7 @@ const Read: React.FC = () => {
         id: getdata?.id,
         maLop: values.maLop,
         tenLop: values.tenLop,
-        moTa: values.maLop
+        moTa: values.moTa
       }
       axios.put("http://192.168.5.240/api/v1/builder/form/lop-hoc/data",
         data,
@@ -46,14 +46,20 @@ const Read: React.FC = () => {
           alert("Ma Lop da ton tai ")
         }
       })
+      .catch(error=>{
+        if(error.response.status == 401){
+          navigate("/login");
+        }else{
+          console.log(error)
+        }
+      })
 
   };
 
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
-
-  // console.log(data)
+  
   const params = useParams()
   useEffect(() => {
     axios.get("http://192.168.5.240/api/v1/builder/form/lop-hoc/data/" + params.id,
@@ -79,11 +85,9 @@ const Read: React.FC = () => {
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         style={{ maxWidth: 600 }}
-        initialValues={{
-          tenLop: getdata?.tenLop,
-          maLop: getdata?.maLop,
-          id: getdata?.id
-        }}
+        initialValues={
+          getdata
+        }
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         autoComplete="off"
@@ -105,21 +109,13 @@ const Read: React.FC = () => {
           <Input />
         </Form.Item>
 
-        {/* <Form.Item<FieldType>
-          label="Mo Ta"
+        <Form.Item<FieldType>
+          label="Mo ta"
           name="moTa"
           rules={[{ required: true, message: 'Please input your mo ta!' }]}
         >
           <Input />
-        </Form.Item> */}
-
-        {/* <Form.Item<FieldType>
-          label="ID"
-          name="id"
-          rules={[{ required: true, message: 'Please input your id!' }]}  
-        >
-          <Input readOnly/>
-        </Form.Item> */}
+        </Form.Item>
 
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit">

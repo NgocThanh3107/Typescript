@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Homepage from './pages/home/homepage';
-import Account from './pages/home/account';
-import Login from './pages/home/login';
+import Account from './member/account';
+import Login from './member/login';
 import Sinhvien from './component/content/Sinhvien';
 import LopHoc from './component/content/LopHoc';
 import Read from './component/content/crdu-LH/read';
@@ -12,7 +12,8 @@ import Create_sv from './component/content/crdu-SV/create';
 import Read_sv from './component/content/crdu-SV/read';
 import Test from './component/content/crdu-LH/test';
 import Nopage from './pages/home/Nopage';
-
+import FetchAll from './Builder-folder/fetchFolder';
+import FetchFolder from './Builder-folder/fetchFolder';
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
           <Route path='/administrator/builder/data/lop-hoc.html' element={<LopHoc />} />
           <Route path='/read/:id' element={<Read />} />  
           <Route path='/create_lophoc' element={<Create />} />  
+          {/* <Route path='/fetchFolder' element={<FetchFolder />} /> */}
         </Route>
         <Route path='/login' element={<Login />} />
         <Route path='/test' element={<Test />} />

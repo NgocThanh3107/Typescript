@@ -14,7 +14,6 @@ const Account: React.FC = () =>{
                     "API-Key": api ,
                     "Authorization": `Bearer ${token}`
                 }
-                
             }
         )
         .then(res=>{
