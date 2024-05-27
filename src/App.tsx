@@ -1,19 +1,26 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Homepage from './pages/home/homepage';
-import Account from './member/account';
-import Login from './member/login';
-import Sinhvien from './component/content/Sinhvien';
-import LopHoc from './component/content/LopHoc';
-import Read from './component/content/crdu-LH/read';
-import Create from './component/content/crdu-LH/create';
-import Create_sv from './component/content/crdu-SV/create';
-import Read_sv from './component/content/crdu-SV/read';
-import Test from './component/content/crdu-LH/test';
-import Nopage from './pages/home/Nopage';
-import FetchAll from './Builder-folder/fetchFolder';
-import FetchFolder from './Builder-folder/fetchFolder';
+import HomePage from './components/layout/HomePage';
+import Account from './components/member/Account';
+import Login from './components/member/Login';
+import SinhVien from './pages/SinhVien/SinhVien';
+import LopHoc from './pages/LopHoc/LopHoc';
+import CreateSinhVien from './pages/SinhVien/CreateAndEditSinhVien/CreateSinhVien';
+import EditSinhVien from './pages/SinhVien/CreateAndEditSinhVien/EditSinhVien';
+import TreeFolder from './pages/Folder/Folder';
+import EditFolder from './pages/Folder/EditAndCreateFolder/EditFolder';
+import CreateFolder from './pages/Folder/EditAndCreateFolder/CreateFolder';
+import FormField from './pages/Form/FormField';
+import CreateForm from './pages/Form/CreateAndEditForm/CreateForm';
+import Form from './pages/Form/Form';
+import EditFormField from './pages/Form/CreateAndEditFormField/EditFormField';
+import EditForm from './pages/Form/CreateAndEditForm/EditForm';
+import EditLop from './pages/LopHoc/CreateAndEditLopHoc/EditLop';
+import CreateLop from './pages/LopHoc/CreateAndEditLopHoc/CreateLop';
+import PageNotFound from './components/layout/PageNotFound';
+import Register from './components/member/Register';
+import CreateFormField from './pages/Form/CreateAndEditFormField/CreateFormField';
 
 function App() {
 
@@ -22,22 +29,29 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Homepage />}>
-          <Route path='/administrator/builder/data/sinh-vien.html' element={<Sinhvien />} />  
-          <Route path='/read_sinhvien/:id' element={<Read_sv />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/create_sinhvien' element={<Create_sv />}/>
+        <Route path='/' element={<HomePage />}>
+          <Route path='/administrator/builder/data/sinh-vien.html' element={<SinhVien />} />  
+          <Route path='/administrator/builder/data/sinh-vien/edit/:id.html' element={<EditSinhVien />} />
+          <Route path='/administrator/builder/data/sinh-vien/create.html' element={<CreateSinhVien />}/>
           <Route path='/administrator/builder/data/lop-hoc.html' element={<LopHoc />} />
-          <Route path='/read/:id' element={<Read />} />  
-          <Route path='/create_lophoc' element={<Create />} />  
-          {/* <Route path='/fetchFolder' element={<FetchFolder />} /> */}
+          <Route path='/administrator/builder/data/lop-hoc/edit/:id.html' element={<EditLop />} />  
+          <Route path='/administrator/builder/data/lop-hoc/create.html' element={<CreateLop/>} />  
+          <Route path='/administrator/internship/builder/folder.html' element={<TreeFolder />}/>
+          <Route path='/administrator/internship/builder/folder/edit/:id.html' element={<EditFolder />}/>
+          <Route path='/administrator/internship/builder/folder/create.html' element={<CreateFolder />}/>
+          <Route path='/administrator/internship/builder/form.html' element={<Form />} />
+          <Route path='/administrator/internship/builder/form/edit/:id.html' element={<EditForm />}/>
+          <Route path='/administrator/internship/builder/form/create.html' element={<CreateForm />}/>
+          <Route path='/administrator/internship/builder/formfield/:id.html' element= {<FormField/>} />
+          <Route path='/administrator/internship/builder/formfield/create' element={<CreateFormField />}/>
+          <Route path='/administrator/internship/builder/formfield/edit/:id.html' element={<EditFormField />}/>
         </Route>
+        <Route path='/account' element={<Account />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/test' element={<Test />} />
-        <Route path='*' element={<Nopage/>}/>
+        <Route path='/register' element={<Register />} />
+        <Route path='*' element={<PageNotFound/>}/>
       </Routes>
     </BrowserRouter>
   );
 }
-
 export default App;

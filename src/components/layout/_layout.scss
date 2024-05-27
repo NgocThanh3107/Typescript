@@ -1,0 +1,250 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    width: 100%;
+    margin: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+.header{
+    width: 100%;
+    background-color: #757474;
+    display: flex;
+    align-items: center;
+    line-height: 75px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    
+    .nav_center{
+        width:50%;
+        text-align: right;
+        padding-top: 10px;
+        ul{
+            li{
+                display: inline-block;
+                padding-right: 25px;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+    .nav_icon{
+        width: 20%;
+        float: left;
+        padding-left: 20px;
+        padding-top: 10px;
+        text-align: left;
+        a{
+            text-decoration: none;
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+    .nav_right{
+        width: 30%;
+        text-align: right;
+        ul{
+            padding-top: 13px ;
+            li{
+                display: inline-block;
+                padding-right: 20px;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    font-size: 17px;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}
+
+.menu{
+    width: 100%;
+    background-color: #fff;
+    text-align: left;
+    overflow-y: auto;
+    max-height: calc(100vh - 104px);
+    scrollbar-width: thin;
+        a{
+            font-size: 17px;
+            font-weight: bold;
+        }
+        .submenu{
+            span{
+                font-size: 17px;
+                font-weight: bold;
+                margin: auto;
+            }
+        }
+}
+
+.container {
+    display: flex;
+    flex: 1;
+}
+
+.sider {
+    width: 20%;
+    background-color: #fff;
+    max-height: calc(94vh - 75px);
+    position: sticky;
+    top: 100px;
+    padding-top: 20px;
+}
+
+.content {
+    width: 80%;
+    background-color: #ecebeb;
+    display: flex;
+    flex-direction: column;
+} 
+
+.footer {
+    width: 100%;
+    background-color: #757474;
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    line-height: 80px;
+    margin-top: auto;
+}
+
+@media screen and (max-width: 1024px) {
+      
+    .header{
+        width: 100%;
+        .nav_icon{
+            width: 20%; 
+            a{
+                font-size: 25px;
+            }
+        }
+        .nav_center{
+            width: 50%;
+            ul{
+                li{
+                    a{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+        .nav_right{
+            width: 30%;
+            ul{
+                li{
+                    // padding-right: 10px;
+                    a{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+    }
+    .menu{
+        a{
+            font-size: 15px;
+        }
+        .submenu{
+            span{
+                font-size: 15px;
+            }
+        }
+    }
+
+    .sider {
+        width: 25%;
+        font-size: 14px; 
+        padding-bottom: 30px;
+    }
+
+    .content{
+        width: 75%;
+        padding: 0;
+    }
+    
+}
+
+@media screen and (max-width: 430px){
+    .app{
+        display:inline-block;
+        width: 100%;
+        height: auto;
+    }
+    .header{
+        width: 100%;
+        line-height: 30px;
+        .nav_icon{
+            width: 20%;
+            padding: 0;
+            padding-left: 5px;
+
+            a{
+                font-size: 20px;
+            }
+        }
+        .nav_center{
+            width: 50%;
+            padding: 0;
+            ul{
+                li{
+                    padding: 5px;
+                    a{
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .nav_right{
+            width: 30%;
+            ul{
+                padding: 0;
+                li{
+                    display: block;
+                    text-align: center;
+                    padding: 0;
+                    a{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+    .container{
+        display: block;
+    }
+    .sider{
+        width: 100%;
+        display: inline-block;
+        // padding: 0;
+    }
+    .content{
+        display: block;
+        width: 100%;
+        float: right;
+        h1{
+            font-size: 20px;
+        }
+    }
+    .footer{
+        display: block;
+        width: 100%;
+        line-height: 40px;
+    }
+}
