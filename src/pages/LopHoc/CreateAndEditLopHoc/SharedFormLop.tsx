@@ -56,11 +56,12 @@ const SharedFormLop: React.FC<MyFormProps> = ({ isEdit, data, id }) => {
 
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
-        const { errorFields } = errorInfo;
-        if (errorFields.some((field: any) => field.name[0] === 'maLop')) {
-           message.error('Vui lòng nhập Mã Lớp')
-        }
     };
+
+    const handleInputChange = () => {
+        setcodeError('');
+    };
+    
 
     return (    
         <div className="edit-create">
@@ -87,17 +88,16 @@ const SharedFormLop: React.FC<MyFormProps> = ({ isEdit, data, id }) => {
                 <Form.Item
                     label="Mã Lớp"
                     name="maLop"
-                    rules={[{ required: true, message: 'Please input your ma lop !' }]}
-                    validateStatus={codeError ? "error" : ""}
-                    help={ codeError ? codeError : ""}
+                    rules={[{ required: true, message: 'Please input your ma lop!' }]}
+                    validateStatus={codeError ? "error" : undefined}
+                    help={codeError || undefined}
                 >
-                    <Input />
+                    <Input onChange={handleInputChange}/>
                 </Form.Item>
 
                 <Form.Item
                     label="Mô Tả"
                     name="moTa"
-                    // rules={[{ required: true, message: 'Please input your mo ta!' }]}
                 >
                     <Input />
                 </Form.Item>

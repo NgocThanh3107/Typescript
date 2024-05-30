@@ -11,6 +11,7 @@ import  { useContext, useLayoutEffect } from 'react';
 import { StyleProvider } from '@ant-design/cssinjs';
 import { ExclamationCircleFilled } from '@ant-design/icons';
 import { App, ConfigProvider, Modal, Empty, Flex, Spin } from 'antd';
+import Link from "antd/es/typography/Link";
 import '../_pages.scss';
 
 type DirectoryTreeProps = GetProps<typeof Tree.DirectoryTree>;
@@ -55,7 +56,7 @@ const Folder = () => {
       title: 'Action',
       dataIndex: '',
       render: (record) => (
-        <a className="ac-edit" onClick={(e) =>{e.preventDefault(); navigate('/administrator/internship/builder/folder/edit/'+ record?.id + '.html')}}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+        <Link href={'/administrator/internship/builder/folder/edit/'+ record?.id + '.html'} className="ac-edit" onClick={(e) =>{e.preventDefault(); navigate('/administrator/internship/builder/folder/edit/'+ record?.id + '.html')}}><i className="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</Link>
       )
     }
   ];
@@ -72,7 +73,7 @@ const Folder = () => {
     const [loading,setLoading] = useState(true);
     const [startSTT, setStartSTT] = useState(0);
     const [allSelectedIds, setAllSelectedIds] = useState<number[]>([]);
-    
+
       useEffect(() => {
         axios.get(`http://192.168.5.240/api/v1/folder/tree`, {
           headers: {
@@ -87,7 +88,7 @@ const Folder = () => {
           setLoading(false);   
         })
         .catch(error=>{
-          if(error.response.status == 401){
+          if(error.response.status === 401){
             navigate("/login");
           }else{
             console.log(error)
@@ -144,14 +145,11 @@ const Folder = () => {
     const [selectedFolderName, setSelectedFolderName] = useState<string>('');
 
     const onSelect: DirectoryTreeProps['onSelect'] = (keys, info) => {
-      info.selectedNodes.map((v)=>{
-          if ('title' in info.node) {
-              setSelectedFolderName(info.node.title as string);
-              setIdParent(keys[0] as number);
-              fetchData(1,10, keys[0] as number);
-          }
-          console.log(keys)
-      });
+      if ('title' in info.node) {
+        setSelectedFolderName(info.node.title as string);
+        setIdParent(keys[0] as number);
+        fetchData(1,10, keys[0] as number);
+      }
     }
     
     
@@ -209,7 +207,6 @@ const Folder = () => {
                   (item) => item.id !== undefined && !allSelectedIds.includes(item.id)
                 );
                 setGetData1(updatedData);
-        
                 setAllSelectedIds([]);
             }
           })
@@ -243,7 +240,6 @@ const Folder = () => {
       const { current, pageSize } = pagination;
         fetchData(current, pageSize, IdParent);
     };
-    
 
     const onSelectChange = (newSelectedRowKeys: React.Key[]) => {
     
@@ -280,7 +276,6 @@ const Folder = () => {
       onChange: onSelectChange,
     };
     
-
     const hasSelected = allSelectedIds.length > 0;
 
     const { locale, theme } = useContext(ConfigProvider.ConfigContext);
@@ -340,7 +335,7 @@ const Folder = () => {
             {handleTree()}
           </div>
           <div className="table-folder">
-            <div className="delete" >
+            <div className="delete">
               <Button size="small" type="primary" danger onClick={handleDelete} disabled={!hasSelected}>
                 <i className="fa fa-trash-o" aria-hidden="true"> </i> Delete
               </Button>

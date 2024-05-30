@@ -122,8 +122,14 @@
 
     const onFinishFailed = (errorInfo: any) => {
       console.log('Failed:', errorInfo);
-    };
+    }
 
+    const handleInputName = () => {
+      setNameError('')
+    }
+    const handleInputCode = () => {
+      setCodeError('')
+    }
     return (
       <div className="edit-create">
         <h1>{isEdit ? "Edit and Update form" : "Create New Form"}</h1>
@@ -142,20 +148,20 @@
             label="Name"
             name="name"
             rules={[{ required: true, message: "Vui lòng nhập tên!" }]}
-            validateStatus={nameError ? "error" : ""}
-            help={nameError ? nameError : ""}
+            validateStatus={nameError ? "error" : undefined}
+            help={nameError || undefined}
           >
-            <Input />
+            <Input onChange={handleInputName}/>
           </Form.Item>
 
           <Form.Item
             label="Code"
             name="code"
             rules={[{ required: true, message: 'Please input your code!' }]}
-            validateStatus={codeError ? "error" : ""}
-            help={codeError ? codeError : ""}
+            validateStatus={codeError ? "error" : undefined}
+            help={codeError || undefined}
           >
-            <Input />
+            <Input onChange={handleInputCode}/>
           </Form.Item>
 
           <Form.Item
